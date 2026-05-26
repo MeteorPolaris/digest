@@ -1,38 +1,75 @@
-# {{month}} 精华书导览
+# {{month}} 知识摘要总览
 
-> 信息来源：{{star_count}}条星球内容 + {{article_count}}篇付费文章 + {{report_count}}份研报
-> 覆盖时间：{{date_range}}
-> 生成时间：{{generated_at}}
+> 本期共覆盖 {{source_count}} 个信息源，提炼 {{theme_count}} 个核心主题。
 
 ---
 
-## 一句话速览
+## 信息来源统计
 
-{{one_line_summary}}
+| 来源类别 | 数量 | 覆盖主题 | 可信度评级 |
+|---------|------|---------|-----------|
+{{source_stats_rows}}
+| **合计** | **{{source_count}}** | - | - |
+
+### 来源分布
+
+- 专业期刊/论文：{{journal_count}} 篇
+- 行业报告：{{report_count}} 份
+- 权威媒体：{{media_count}} 篇
+- 深度访谈/播客：{{interview_count}} 期
+- 社区讨论/论坛：{{community_count}} 条
 
 ---
 
 ## 各主题速览
 
 {{#each themes}}
-### {{id}} {{name}} — "{{tagline}}"
+### {{@index}}. {{title}}
 
-{{overview}}
+{{summary}}
 
-→ 信号强度：{{signal_strength}} | 共识度：{{consensus_level}} | 关键变量：{{key_variable}}
+**关键信号**: {{key_signal}}
+
+---
+{{/each}}
+
+## 本月核心变量
+
+> 以下变量在多个主题中反复出现，是理解本月信息格局的关键锚点。
+
+| 变量 | 出现频次 | 影响方向 | 关联主题 |
+|-----|---------|---------|---------|
+{{core_variables_rows}}
+
+### 变量解读
+
+{{#each core_variables}}
+**{{name}}**: {{interpretation}}
 
 {{/each}}
 
 ---
 
-## 本月核心变量
-
-{{#each key_variables}}
-{{number}}. **{{name}}**：{{description}}
-{{/each}}
-
 ## 跨主题共振
 
-{{#each cross_theme_links}}
-- **{{theme_a}}×{{theme_b}}**：{{description}}
+> 不同主题之间的信号交叉点，往往预示着结构性变化。
+
+{{#each resonances}}
+### {{title}}
+
+- **涉及主题**: {{themes}}
+- **共振信号**: {{signal}}
+- **潜在影响**: {{impact}}
+
 {{/each}}
+
+---
+
+## 阅读建议
+
+{{reading_suggestions}}
+
+---
+
+*生成时间: {{generated_at}}*
+*数据截止: {{data_cutoff}}*
