@@ -1,0 +1,41 @@
+# Digest 配置文件示例
+# 复制此文件到你的数据目录，按需修改
+
+input:
+  directory: "./raw-data"
+  file_types:
+    txt:
+      pattern: "**/*.txt"
+      description: "每日资讯笔记"
+    md:
+      pattern: "**/*.md"
+      description: "付费文章/深度分析"
+    pdf:
+      pattern: "**/*.pdf"
+      description: "研报PDF"
+      max_deep_read: 5  # 每个Agent最多精读PDF数
+
+output:
+  directory: "./digest-output"
+  formats: ["md", "html"]
+
+themes:
+  mode: "auto"  # auto: AI自动聚类 | manual: 手动定义
+  # manual模式示例：
+  # definitions:
+  #   - name: "AI与算力"
+  #     keywords: ["算力", "GPU", "存储", "光模块", "芯片"]
+  #   - name: "新能源"
+  #     keywords: ["锂电", "储能", "光伏", "电池"]
+
+pipeline:
+  max_parallel_agents: 8
+  coverage_threshold: 0.5  # 提取覆盖率低于此值触发补救
+  dedup: true              # 自动去重
+  self_evolution: true     # 记录问题与解决
+
+html:
+  theme: "dark"
+  sidebar: true
+  search: true
+  collapsible: true
